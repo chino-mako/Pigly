@@ -1,0 +1,299 @@
+/* 🌟 基本スタイル */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F9F9F9;
+}
+
+/* ヘッダー */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #fff;
+    border-bottom: 2px solid #EAEAEA;
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #D18ACD;
+    text-decoration: none;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* ボタン */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* グラデーションボタン */
+.btn-gradient {
+    background: linear-gradient(45deg, #C084F5, #F7A8B8);
+}
+
+.btn-gray {
+    background-color: #D3D3D3;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-delete {
+    background-color: #FF6B6B;
+}
+
+/* コンテンツエリア */
+.container {
+    max-width: 900px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+
+/* 入力フォーム */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* エラーメッセージ */
+.error {
+    color: #D32F2F;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* 目標体重エリア */
+.weight-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.weight-summary div {
+    width: 30%;
+    text-align: center;
+    background: #F9F9F9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.weight-summary p {
+    font-size: 14px;
+    color: #666;
+}
+
+.weight-summary h2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* 検索機能 */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.search-container form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    justify-content: center;
+}
+
+.search-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 160px;
+    font-size: 14px;
+}
+
+.search-container button {
+    background-color: #666;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #444;
+}
+
+/* リセットボタン */
+.search-container .btn-gray {
+    background-color: #D3D3D3;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.search-container .btn-gray:hover {
+    background-color: #B0B0B0;
+}
+
+/* 検索結果表示 */
+.search-result {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background: #F7F7F7;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.add-data-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #C084F5, #F7A8B8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.add-data-button:hover {
+    opacity: 0.8;
+}
+
+/* テーブル */
+.weight-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.weight-table th, .weight-table td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.weight-table th {
+    background: #F2F2F2;
+    font-weight: bold;
+}
+
+.weight-table tr:last-child {
+    background-color: #F0F0F0;
+}
+
+/* 編集アイコン */
+.edit-icon {
+    color: #C084F5;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.edit-icon:hover {
+    color: #A067D1;
+}
+
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    margin: 0 5px;
+    text-decoration: none;
+    background: #D18ACD;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background: #F7A8B8;
+}
+
+/* モーダル */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal:target {
+    display: block;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    margin: 10% auto;
+    width: 50%;
+    border-radius: 10px;
+}
