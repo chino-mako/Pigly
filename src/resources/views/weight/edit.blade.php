@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label for="exercise_time">運動時間</label>
                 <input type="time" id="exercise_time" name="exercise_time"
-                value="{{ old('exercise_time', substr($weightLog->exercise_time, 0, 5)) }}">
+                value="{{ old('exercise_time', $weightLog->exercise_time ? substr($weightLog->exercise_time, 0, 5) : '00:00') }}">
                 @error('exercise_time')
                     <p class="error">{{ $message }}</p>
                 @enderror
@@ -50,9 +50,9 @@
 
             <!-- 運動内容 -->
             <div class="form-group">
-                <label for="exercise_details">運動内容</label>
-                <textarea id="exercise_details" name="exercise_details" rows="3">{{ old('exercise_details', $weightLog->exercise_details) }}</textarea>
-                @error('exercise_details')
+                <label for="exercise_content">運動内容</label>
+                <textarea id="exercise_content" name="exercise_content" rows="3">{{ old('exercise_content', $weightLog->exercise_content) }}</textarea>
+                @error('exercise_content')
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>

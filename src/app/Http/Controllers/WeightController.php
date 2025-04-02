@@ -20,6 +20,10 @@ class WeightController extends Controller
         $user = Auth::user();
         $weightLogs = WeightLog::where('user_id', auth()->id())->paginate(8);
 
+        foreach ($weightLogs as $log) {
+        \Log::info("ID: {$log->id}, Date: {$log->date}, Exercise Time: {$log->exercise_time}");
+        }
+
         // 目標体重と最新体重を数値として確実に取得
         $targetWeight = floatval(optional($user->weightTarget)->target_weight ?? 0);
         $latestWeight = floatval(optional($weightLogs->first())->weight ?? 0);
@@ -43,15 +47,10 @@ class WeightController extends Controller
         // 運動時間を "HH:MM" 形式で受け取る
         $exerciseTime = $request->exercise_time;
 
-        // 変数を事前に定義（エラー防止）
-        $exerciseMinutes = 0;
-
-        // HH:MM を "HH:MM:00" に変換（TIME 型に対応）
+        // "HH:MM" → "HH:MM:00" に変換
+        $formattedExerciseTime = "00:00:00"; // デフォルト
         if (!empty($exerciseTime) && preg_match('/^(\d{1,2}):(\d{2})$/', $exerciseTime, $matches)) {
             $formattedExerciseTime = sprintf('%02d:%02d:00', (int) $matches[1], (int) $matches[2]);
-            $exerciseMinutes = (int) $matches[1] * 60 + (int) $matches[2]; // 分に変換
-        } else {
-            $formattedExerciseTime = "00:00:00"; // デフォルト値
         }
 
         WeightLog::create([
@@ -59,8 +58,8 @@ class WeightController extends Controller
             'date' => $request->date,
             'weight' => $request->weight,
             'calories' => $request->calories,
-            'exercise_time' => $exerciseMinutes, // 修正された運動時間
-            'exercise_details' => $request->exercise_details,
+            'exercise_time' => $formattedExerciseTime, // 修正：HH:MM:00 形式で保存
+            'exercise_content' => $request->exercise_content,
         ]);
 
         return redirect()->route('weight.index')->with('success', '体重データを登録しました！');
@@ -123,16 +122,25 @@ class WeightController extends Controller
     {
         $weightLog = WeightLog::findOrFail($weightLogId);
 
+        // "HH:MM" → "HH:MM:00" に変換
+        $exerciseTime = $request->exercise_time;
+        $formattedExerciseTime = "00:00:00"; // デフォルト値
+
+        if (!empty($exerciseTime) && preg_match('/^(\d{1,2}):(\d{2})$/', $exerciseTime, $matches)) {
+            $formattedExerciseTime = sprintf('%02d:%02d:00', (int) $matches[1], (int) $matches[2]);
+        }
+
         $weightLog->update([
-            'date' => \Carbon\Carbon::parse($weightLog->date)->format('Y-m-d'),
+            'date' => \Carbon\Carbon::parse($request->date)->format('Y-m-d'),
             'weight' => $request->weight,
             'calories' => $request->calories,
-            'exercise_time' => $request->exercise_time,
-            'exercise_details' => $request->exercise_details,
+            'exercise_time' => $formattedExerciseTime, // 修正：HH:MM:00 形式で統一
+            'exercise_content' => $request->exercise_content,
         ]);
 
         return redirect()->route('weight.index')->with('success', '体重ログを更新しました！');
     }
+
 
     /**
      * 体重削除処理

@@ -61,7 +61,7 @@
                 <td>{{ $weightLog->date }}</td>
                 <td>{{ number_format($weightLog->weight ?? 0, 1) }} kg</td>
                 <td>{{ number_format($weightLog->calories) }} cal</td>
-                <td>{{ floor($weightLog->exercise_time_in_seconds / 60) }}時間{{ sprintf('%02d', $weightLog->exercise_time_in_seconds % 60) }}分</td>
+                <td>{{ \Carbon\Carbon::parse($weightLog->exercise_time)->format('H:i') }}</td>
                 <td>
                     <a href="{{ route('weight.edit', ['weightLogId' => $weightLog->id]) }}">
                         <i class="fas fa-pencil-alt edit-icon"></i>✏️
@@ -105,13 +105,13 @@
 
             {{-- 運動時間入力 --}}
             <label>運動時間（分）</label>
-            <input type="text" name="exercise_time" placeholder="HH:MM" value="{{ old('exercise_time', '00:00') }}">
+            <input type="time" name="exercise_time" value="{{ old('exercise_time', '00:00') }}">
             @error('exercise_time') <p class="error">{{ $message }}</p> @enderror
 
             {{-- 運動内容入力 --}}
             <label>運動内容</label>
-            <textarea name="exercise_details">{{ old('exercise_details') }}</textarea>
-            @error('exercise_details') <p class="error">{{ $message }}</p> @enderror
+            <textarea name="exercise_content">{{ old('exercise_content') }}</textarea>
+            @error('exercise_content') <p class="error">{{ $message }}</p> @enderror
 
             {{-- 登録ボタン --}}
             <button type="submit">登録</button>
