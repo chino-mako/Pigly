@@ -6,7 +6,7 @@
 
 @section('content')
     <!-- ログインフォーム -->
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login.process') }}">
         @csrf
 
         <!-- メールアドレス入力 -->
@@ -18,7 +18,6 @@
                 name="email" 
                 placeholder="メールアドレスを入力" 
                 value="{{ old('email') }}" 
-                required
             >
             @error('email') 
                 <p class="error-text">{{ $message }}</p> 
@@ -32,8 +31,7 @@
                 type="password" 
                 id="password" 
                 name="password" 
-                placeholder="パスワードを入力" 
-                required
+                placeholder="パスワードを入力"
             >
             @error('password') 
                 <p class="error-text">{{ $message }}</p> 

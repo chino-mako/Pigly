@@ -31,7 +31,7 @@ Route::post('/register/step2', [RegisterController::class, 'storeInitialWeight']
 
 
 //ログイン画面
-Route::view('/login', 'auth.login')->name('login');
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.process');
 
 //体重管理画面

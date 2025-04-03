@@ -3,27 +3,28 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController as FortifyAuthenticatedSessionController;
-
 
 class AuthenticatedSessionController extends Controller
 {
     /**
+     * ログイン画面を表示
+     */
+    public function create()
+    {
+        return view('auth.login');
+    }
+
+    /**
      * ログイン処理
      */
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-
-            return redirect()->route('weight.index');  // ✅ ログイン後のリダイレクトを設定
+            return redirect()->route('weight.index');
         }
 
         return back()->withErrors([
