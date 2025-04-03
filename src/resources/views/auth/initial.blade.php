@@ -18,8 +18,7 @@
                 id="weight" 
                 name="weight" 
                 placeholder="現在の体重を入力" 
-                value="{{ old('weight', Auth::user()->weightLogs()->latest()->value('weight') ?? '') }}" 
-                required
+                value="{{ old('weight', Auth::user()->weightLogs()->latest()->value('weight') ?? '') }}"
             >
             @error('weight')
                 <p class="error-text">{{ $message }}</p>
@@ -35,8 +34,7 @@
                 id="target_weight" 
                 name="target_weight" 
                 placeholder="目標の体重を入力" 
-                value="{{ old('target_weight') }}" 
-                required
+                value="{{ old('target_weight') }}"
             >
             @error('target_weight')
                 <p class="error-text">{{ $message }}</p>
