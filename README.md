@@ -26,7 +26,7 @@
   Docker / Docker Compose<br>
 
 ## ER図
-- src/index.png<br>
+/Users/chinomako/coachtech/exam3-Pigly/index.png
 
 ## URL
 - 環境開発：http://localhost/<br>
