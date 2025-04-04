@@ -26,7 +26,8 @@
   Docker / Docker Compose<br>
 
 ## ER図
-/Users/chinomako/coachtech/exam3-Pigly/index.png
+![index](https://github.com/user-attachments/assets/0d2762d7-c4f7-45c5-b0f2-2d4b5188ed7c)
+
 
 ## URL
 - 環境開発：http://localhost/<br>
